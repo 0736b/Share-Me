@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}
-  {{post.text}} by {{post.author.username}}
+  Create a new Post
 {% endblock title %}
 
 {% block body %}
-
-{% include "includes/post.html" with post=post %}
-
+  {{ form.as_p }}
 {% endblock body %}
