@@ -6,10 +6,12 @@
 {% endblock title %}
 
 {% block body %}
-  {% for post in posts %}
+  <div id="posts-container">
+    {% for post in posts %}
 
-    <!-- post card -->
-    {% include "includes/post.html" with post=post show_detail_link=True %}
+      <!-- post card -->
+      {% include "includes/post.html" with post=post show_detail_link=True %}
 
-  {% endfor %}
+    {% endfor %}
+  </div>
 {% endblock body %}

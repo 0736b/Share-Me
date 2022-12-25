@@ -59,8 +59,11 @@
     {% if request.user.is_authenticated %}
     <div class="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0 hidden js-modal">
       <div class="bg-white px-16 py-14 text-center">
-        <h1 class="text-xl mb-4 font-bold">New post</h1>
-        <p class="mb-4">Do you want to create a new post</p>
+        <h1 class="text-xl mb-4 font-bold">Create a new post</h1>
+        <div class="ajax-form">
+         <textarea class="border-2 border-blue-500 my-4 js-post-text" rows="3" placeholder="Enter your post" maxlength="240" data-post-url="{% url 'feed:new_post' %}">
+         </textarea>
+        </div>
         <button class="bg-red-500 px-4 py-2 text-md text-white js-toggle-modal">Cancel</button>
         <button class="shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-md py-2 px-7 ml-2 js-submit" type="button">Create Post</button>
       </div>

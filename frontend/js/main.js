@@ -33,4 +33,32 @@ $(document).on("click", ".js-toggle-modal", function(e) {
     e.preventDefault()
     console.log("Hello I was clicked")
     $(".js-modal").toggleClass("hidden")
+    $(".js-post-text").val('')
+})
+.on("click", ".js-submit", function(e) {
+    e.preventDefault()
+    console.log("hello click")
+    const text = $(".js-post-text").val().trim()
+    const $btn = $(this)
+    if (!text.length) {
+        return false
+    }
+    $btn.prop("disabled", true).text("Posting!")
+    $.ajax({
+        type: 'POST',
+        url: $(".js-post-text").data("post-url"),
+        data: {
+            text: text
+        },
+        success: (dataHtml) => {
+            $(".js-modal").addClass("hidden");
+            $("#posts-container").prepend(dataHtml);
+            $btn.prop("disabled", false).text("New Post");
+            $(".js-post-text").val('')
+        },
+        error: (error) => {
+            console.warn(error)
+            $btn.prop("disabled", false).text("Error");
+        }
+    });
 })
