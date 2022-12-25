@@ -5,5 +5,11 @@
 {% endblock title %}
 
 {% block body %}
-  {{ form.as_p }}
+    <form action="." method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button class="block uppercase shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 my-4" type="submit">Create Post</button>
+        </div>
+    </form>
 {% endblock body %}
