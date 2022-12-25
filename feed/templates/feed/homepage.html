@@ -5,5 +5,8 @@
 {% endblock title %}
 
 {% block body %}
-  Homepage naja
+  {% for post in posts %}
+    {{ post.text }} written on {{ post.date }}
+    <hr>
+  {% endfor %}
 {% endblock body %}
