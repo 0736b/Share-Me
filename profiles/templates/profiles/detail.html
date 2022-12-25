@@ -15,7 +15,13 @@
     {% if request.user.is_authenticated %}
         {% if request.user != user %}
             <div class="text-center">
-                <button class="shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-md py-3 px-10 my-4 js-follow" data-username="{{ user.username }}" type="button"><span class="js-follow-text">Follow</span></button>
+                <button class="shadow bg-indigo-800 js-follow hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-md py-3 px-10 my-4" data-username="{{ user.username }}" data-action="{% if you_follow %}un{% endif %}follow" data-url="{% url 'profiles:follow' user.username %}" type="button"><span class="js-follow-text">
+                  {% if you_follow %}
+                    Unfollow
+                  {% else %}
+                    Follow
+                  {% endif %} 
+                </span></button>
             </div>
         {% endif %}
     {% else %}
