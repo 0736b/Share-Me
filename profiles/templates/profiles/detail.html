@@ -12,6 +12,17 @@
     <img class="w-32 mx-auto -mt-20 border-8 border-white" src="{{ im.url }}" alt="">
     {% endthumbnail %}
     <div class="text-center mt-2 text-3xl font-medium">{{user.username}}</div>
+    {% if request.user.is_authenticated %}
+        {% if request.user != user %}
+            <div class="text-center">
+                <button class="shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-md py-3 px-10 my-4 js-follow" data-username="{{ user.username }}" type="button"><span class="js-follow-text">Follow</span></button>
+            </div>
+        {% endif %}
+    {% else %}
+    <div class="text-center">
+        Login to follow this user
+    </div>
+    {% endif %}
     <!-- <div class="text-center mt-2 font-light text-sm">@devpenzil</div>
     <div class="text-center font-normal text-lg">Kerala</div> -->
     <!-- <div class="px-6 text-center mt-2 font-light text-sm">
@@ -22,7 +33,7 @@
     <hr class="mt-8">
     <div class="flex p-4">
       <div class="w-1/2 text-center">
-        <span class="font-bold">xx</span> Posts
+        <span class="font-bold">{{total_posts}}</span> Posts
       </div>
       <div class="w-0 border border-gray-300">
         
